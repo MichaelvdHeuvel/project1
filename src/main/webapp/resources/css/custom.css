@@ -1,0 +1,45 @@
+/*Background color for the whole page*/
+body{
+    background:#dfebf5;
+}
+/*Fix for the color of the table. Being sure table stays white all the time!*/
+table{
+    background:#fff;
+}
+/*Add a glyphicon in a input field*/
+.left-inner-addon {
+    position: relative;
+}
+.left-inner-addon input {
+    padding-left: 30px;    
+}
+.left-inner-addon i {
+    position: absolute;
+    padding: 10px 12px;
+    pointer-events: none;
+}
+.right-inner-addon {
+    position: relative;
+}
+.right-inner-addon input {
+    padding-right: 30px;    
+}
+.right-inner-addon i {
+    position: absolute;
+    right: 0px;
+    padding: 10px 12px;
+    pointer-events: none;
+}
+/*Only resizing textarea vertically*/
+textarea {
+    resize: vertical;
+}
+/*Fix margin for the product table*/
+.margin-fix-product-add{
+    margin-top: 35px;
+}
+
+/*Color for tabbing in profile page */
+.tab-pane{
+    background:#fff;
+}
