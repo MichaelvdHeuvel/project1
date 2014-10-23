@@ -9,7 +9,7 @@
 
         <h1>Gebruikers</h1>
     </jsp:attribute>
-        
+
 
     <jsp:body>
 
@@ -30,7 +30,7 @@
 
                                 <!-- Wanneer er gebruikers opgeslagen zijn, worden ze hier getoond -->
                                 <div class="table-responsive">
-                                    <table class="table userList table-striped table-bordered" id="dataTables-example">
+                                    <table class="table userList table-striped data-table table-bordered" id="dataTables-example">
                                         <thead>
                                             <tr>
                                                 <th>ID</th>
@@ -39,12 +39,13 @@
                                                 <th>Huisnummer</th>
                                                 <th>Plaats</th>
                                                 <th>Rol</th>
+                                                <th>Opties</th>
                                             </tr>
                                         </thead>
                                         <tbody>
-                                        <c:forEach var="user" items="${userList}">
-                                            <!-- Per gebruiker wordt nu een rij aangemaakt met daarin zijn gegevens -->
-                                            
+                                            <c:forEach var="user" items="${userList}">
+                                                <!-- Per gebruiker wordt nu een rij aangemaakt met daarin zijn gegevens -->
+
                                                 <tr>
                                                     <td>${user.userId}</td>
                                                     <td>${user.name}</td>
@@ -54,8 +55,8 @@
                                                     <td>${user.role.name}</td>
 
                                                     <td style="background-color: #fff;"><a href="${pageContext.request.contextPath}/user/edit/${user.userId}">Wijzig</a> |
-                                                    <a href="${pageContext.request.contextPath}/user/remove/${user.userId}">Verwijder</a> |
-                                                    <a href="${pageContext.request.contextPath}/createPdf/${user.userId}">CV</a></td>
+                                                        <a href="${pageContext.request.contextPath}/user/remove/${user.userId}">Verwijder</a> |
+                                                        <a href="${pageContext.request.contextPath}/createPdf/${user.userId}">CV</a></td>
                                                 </tr>
                                             </c:forEach>
                                         </tbody>
@@ -71,30 +72,16 @@
 
                     </div>
                 </div>
-                </div>
-                </div>
-                        
-                        <script>
-                        setTimeout(function() {
-    $('#message').fadeOut('long');
-}, 2000); // <-- time in milliseconds
-</script>
-                       
-                            <!-- DataTables JavaScript -->
-    <script src="${pageContext.request.contextPath}/resources/js/plugins/dataTables/jquery.dataTables.js"></script>
-    <script src="${pageContext.request.contextPath}/resources/js/plugins/dataTables/dataTables.bootstrap.js"></script>
-     <!-- Page-Level Demo Scripts - Tables - Use for reference -->
-    <script>
-    $(document).ready(function() {
-        $('#dataTables-example').dataTable();
-    });
-    </script>
-    
+            </div>
+        </div>
 
-                </jsp:body>
+        
 
 
-            </t:genericpage>
+    </jsp:body>
+
+
+</t:genericpage>
 
 
 

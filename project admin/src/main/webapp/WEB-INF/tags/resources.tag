@@ -17,3 +17,4 @@
 <link href="<%=request.getContextPath()%>/resources/css/styles.css" rel="stylesheet" type="text/css">
 <link href='http://fonts.googleapis.com/css?family=Open+Sans:400italic,400,700' rel='stylesheet' type='text/css'>
 <link href='http://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet' type='text/css'>
+<link href="//cdn.datatables.net/1.10.3/css/jquery.dataTables.min.css" type="text/css">
