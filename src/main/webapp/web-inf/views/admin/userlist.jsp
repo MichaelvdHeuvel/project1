@@ -14,7 +14,6 @@
                         <th>Gebruikersnaam</th>
                         <th>Rol</th>
                         <th>Actief</th>
-                        <th>Actie</th>
                     </tr>
                 </thead>
                 <c:forEach var="user" items="${userList}">

@@ -25,7 +25,7 @@
                                                 <th>Start Datum (yyyy-mm-dd)</th>
                                                 <th>Eind Datum (yyyy-mm-dd)</th>
                                                 <th>Manager</th>
-                                                <c:if test="${loggedInUser.role == 'Manager'}">
+                                                <c:if test="${loggedInUser.role == 2}">
                                                     <th>Actie</th>
                                                 </c:if>
                                                 </tr>
@@ -41,7 +41,7 @@
                                                     <td>${project.endDate}</td>
                                                     <td>${project.assignedManager.firstName} ${project.assignedManager.lastName}</td>
                                                     
-                                                    <c:if test="${loggedInUser.role == 'Manager'}">        
+                                                    <c:if test="${loggedInUser.role == 2}">        
                                                     <td style="background-color: #fff;"><a href="${pageContext.request.contextPath}/project/edit/${project.projectId}">Wijzig</a> |
                                                     <a href="${pageContext.request.contextPath}/project/remove/${project.projectId}">Verwijder</a> 
                                                     </c:if>
@@ -55,7 +55,7 @@
                             <c:otherwise>
                                 <!-- Als er geen projecten zijn, wordt deze melding getoond -->
                                 Er zijn geen projecten gevonden.<br>
-                                <c:if test="${loggedInUser.role == 'Manager'}">
+                                <c:if test="${loggedInUser.role == 2}">
                                 <a href="${pageContext.request.contextPath}/project/add/">Klik hier om een nieuw project aan te maken</a> 
                                 </c:if>
                             </c:otherwise>
