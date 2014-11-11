@@ -134,7 +134,7 @@ public class PDF {
         table1.addCell(cell3);
 
         String str = "http://localhost:8080/LoginTesten/resources/userfiles/" + user.getEmailAddress()+ "/" +user.getProfileImage();
-        
+        System.out.println("8989" + str);
         try {
             Image foto = Image.getInstance(str);
             foto.scaleAbsolute(100f, 100f);
