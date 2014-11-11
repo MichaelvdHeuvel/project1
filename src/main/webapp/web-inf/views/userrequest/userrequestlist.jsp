@@ -26,7 +26,7 @@
                         
                         <td align="center">        
                             <a class="btn btn-danger btn-lg" href="javascript:if(confirm('Weet u het zeker dat u dit verzoek wil verwijderen?'))
-                                                                    window.location='${pageContext.request.contextPath}/request/remove/${request.id}';">
+                                                                    window.location='${pageContext.request.contextPath}/userrequest/delete/${request.id}';">
                                 <i class="glyphicon glyphicon-trash"></i>
                             </a> 
                         </td>
