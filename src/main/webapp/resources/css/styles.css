@@ -32,7 +32,12 @@ body{
     margin-top: 75px;
 }
 
-
+.div-box {
+    background: #fff; 
+    padding:10px; 
+    border: 1px #D0D0D0 solid;
+    border-radius: 5px;
+}
 
 .btn-default{
 padding: 9px;
