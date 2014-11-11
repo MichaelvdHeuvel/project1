@@ -4,8 +4,10 @@ import com.model.User;
 import com.service.UserService;
 import java.io.IOException;
 import javax.servlet.http.HttpSession;
+import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -64,17 +66,27 @@ public class UserController {
      * Get the user and update it's details.
      * 
      * @param user - the user to update
+     * @param result
      * @return ProfileUserList with a message to confirm that a user is updated.
      */
     @RequestMapping(value = "/edit", method = RequestMethod.POST)
-    public ModelAndView editUser(@ModelAttribute("user") User user) {
+    public ModelAndView editUser(@ModelAttribute("user") @Valid User user, BindingResult result) {
         ModelAndView ProfileUserList = new ModelAndView("/profile/profile");
+        
+         if(result.hasErrors()){
+            
+            
+            return new ModelAndView("user/edituser");
+            
+        } else {
+        
         userService.updateUser(user);
         
         ProfileUserList.addObject("user", userService.getUser(user.getId()));
         String message = user.getFirstName() + " " + user.getLastName() + " is succesvol gewijzigd";
         ProfileUserList.addObject("message", message);
-
+        
+         }
         return ProfileUserList;
     }
     

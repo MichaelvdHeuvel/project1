@@ -32,20 +32,9 @@
                                 Administrator
                             </c:if>
                         </td>
-                        <td>
-                            <c:choose>
-                                    <c:when test="${user.active == 1}">
-                                        ja
-                                    </c:when>
-                                    <c:otherwise>
-                                        nee
-                                    </c:otherwise>
-                                </c:choose>
-                        </td>
-                        
                         <td>       
                             <c:choose>
-                                <c:when test="${user.active == 1}">
+                                <c:when test="${user.active == 0}">
                                     <a class="btn btn-danger" href="${pageContext.request.contextPath}/admin/userlist/active/${user.id}">
                                         non actief
                                     </a>

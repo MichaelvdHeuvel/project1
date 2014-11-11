@@ -9,6 +9,7 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
 import javax.persistence.Transient;
+import org.hibernate.validator.constraints.NotEmpty;
 
 /**
  * The user model.
@@ -32,16 +33,24 @@ public class User implements Serializable {
     
     private int role;
     
+    @NotEmpty( message = "Het veld mag niet leeg zijn.")
     private String firstName;
+    @NotEmpty( message = "Het veld mag niet leeg zijn.")
     private String lastName;
-    private String profileImage;
     
+    private String profileImage;
+    @Emails @NotEmpty( message = "Het veld mag niet leeg zijn.")
     private String emailAddress;
+    
     private String phoneNumber;
     
+    @NotEmpty( message = "Het veld mag niet leeg zijn.")
     private String address;
+    @NotEmpty( message = "Het veld mag niet leeg zijn.")
     private String addressNumber;
+    @NotEmpty( message = "Het veld mag niet leeg zijn.")
     private String zipcode;
+    @NotEmpty( message = "Het veld mag niet leeg zijn.")
     private String city;
     
     @Temporal(javax.persistence.TemporalType.TIMESTAMP)

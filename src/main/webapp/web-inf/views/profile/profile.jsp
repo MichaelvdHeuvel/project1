@@ -10,7 +10,7 @@
                 <h1 style="margin-top:70px;">
                     ${user.firstName} ${user.lastName}
                 </h1>
-                ${message}
+                    <div id="message"> ${message}</div>
             </div>
             <div class="col-sm-2 text-center">
                 <div>
@@ -61,15 +61,15 @@
                         </li>
                         <li class="list-group-item text-right">
                             <span class="pull-left">
-                                <a href="${pageContext.request.contextPath}/profile/tabbed/#"> 
-                                    <strong>C.V. instellingen</strong>
+                                <a href="${pageContext.request.contextPath}/resume/edit/${user.id}"> 
+                                    <strong>CV. instellingen</strong>
                                 </a>
                             </span> &nbsp;
                         </li>
                         <li class="list-group-item text-right">
                             <span class="pull-left">
                                 <a href="${pageContext.request.contextPath}/createPdf/${user.id}"> 
-                                    <strong>C.V. uitprinten</strong>
+                                    <strong>CV. genereren</strong>
                                 </a>
                             </span> &nbsp;
                         </li>
