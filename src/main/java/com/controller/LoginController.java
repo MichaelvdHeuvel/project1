@@ -5,8 +5,10 @@ import com.service.LoginService;
 import com.service.UserService;
 import java.io.IOException;
 import javax.servlet.http.HttpSession;
+import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -119,20 +121,28 @@ public class LoginController {
      * message
      */
     @RequestMapping(value = "/register", method = RequestMethod.POST)
-    public ModelAndView userRegister(@ModelAttribute User user) {
+    public ModelAndView userRegister(@ModelAttribute("user") @Valid User user, BindingResult result) {
         if (user.getPassword().equals(user.getPasswordConfirm())) {
-            ModelAndView userRegisterView = new ModelAndView("/login/login");
 
-            user.setProfileImage("blank_person.png");
-            user.setRole(1);
-            user.setActive(1);
+            if (result.hasErrors()) {
 
-            userService.addUser(user);
+                return new ModelAndView("login/register");
 
-            userRegisterView.addObject("user", new User());
-            userRegisterView.addObject("error", "Email verstuurd ter verificatie");
+            } else {
 
-            return userRegisterView;
+                ModelAndView userRegisterView = new ModelAndView("/login/login");
+
+                user.setProfileImage("blank_person.png");
+                user.setRole(1);
+                user.setActive(1);
+
+                userService.addUser(user);
+
+                userRegisterView.addObject("user", new User());
+                userRegisterView.addObject("error", "Email verstuurd ter verificatie");
+
+                return userRegisterView;
+            }
         } else {
             ModelAndView userRegisterView = new ModelAndView("/login/register");
 
