@@ -63,4 +63,28 @@ public class UserRequestController {
         
         return requestAddView;
     }
+    
+    @RequestMapping(value = "/delete/{id}", method = RequestMethod.GET)
+    public ModelAndView deleteUserRequest(@PathVariable Integer id, HttpSession session) {
+        userRequestService.deleteUserRequest(id);
+        
+        if(userRequestService.getUserRequests().isEmpty()){
+            ModelAndView homeView = new ModelAndView("index/index");
+            
+            session.setAttribute("requestList", userRequestService.getUserRequests());
+            session.setAttribute("requestListSize", userRequestService.getUserRequests().size());
+         
+            homeView.addObject("message", "Er zijn geen verzoeken meer!");
+            return homeView;
+        }else{
+            ModelAndView deleteUserRequest = new ModelAndView("/userrequest/list");
+            session.setAttribute("requestList", userRequestService.getUserRequests());
+                session.setAttribute("requestListSize", userRequestService.getUserRequests().size());
+
+            String message = "Verzoek is verwijderd.";
+            deleteUserRequest.addObject("message", message);
+            return deleteUserRequest;
+        }
+    }
+
 }
