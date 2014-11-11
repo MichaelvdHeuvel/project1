@@ -16,21 +16,25 @@
                             <div class="form-group right-inner-addon">
                                 <i class="glyphicon glyphicon-user"></i>
                                 <form:input class="form-control" path="firstName" placeholder="Voornaam" />
+                                <form:errors path="firstName"></form:errors>
                             </div>
                             
                             <div class="form-group right-inner-addon">
                                 <i class="glyphicon glyphicon-user"></i>
                                 <form:input class="form-control" path="lastName" placeholder="Achternaam" />
+                                <form:errors path="lastName"></form:errors>
                             </div>
                             
                             <div class="form-group right-inner-addon">
                                 <i class="glyphicon glyphicon-cloud-upload"></i>
                                 <form:input class="form-control" path="emailAddress" placeholder="Email adres" />
+                                <form:errors path="emailAddress"></form:errors>
                             </div>
                             
                             <div class="form-group right-inner-addon">
                                 <i class="glyphicon glyphicon-envelope"></i>
                                 <form:input class="form-control" path="zipcode" placeholder="Postcode" />
+                                <form:errors path="zipcode"></form:errors>
                             </div>
                             
                             <div class="row">
@@ -38,12 +42,14 @@
                                     <div class="form-group right-inner-addon">
                                         <i class="glyphicon glyphicon-home"></i>
                                         <form:input class="form-control" path="address" placeholder="Adres" />
+                                        <form:errors path="address"></form:errors>
                                     </div>
                                 </div>
                                 <div class="col-md-4 hidden-sm">
                                     <div class="form-group right-inner-addon">
                                         <i class="glyphicon glyphicon-home"></i>
                                         <form:input class="form-control" path="addressNumber" placeholder="Huisnummer" />
+                                        <form:errors path="addressNumber"></form:errors>
                                     </div>
                                 </div>
                             </div>
@@ -51,6 +57,7 @@
                             <div class="form-group right-inner-addon">
                                 <i class="glyphicon glyphicon-home"></i>
                                 <form:input class="form-control" path="city" placeholder="Stad" />
+                                <form:errors path="city"></form:errors>
                             </div>
                             
                             
