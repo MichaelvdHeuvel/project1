@@ -39,13 +39,27 @@
 
         <script>
             $(document).ready(function() {
-                $('#example').DataTable({
+                $('#searchResult').DataTable({
                     "oLanguage": {
                         "oPaginate":{
                             "sPrevious" : "vorige",
                             "sNext" : "volgende"
                         },
-                        "sSearch": "Zoeken:"
+                        "sSearch": "Zoeken binnen resultaten "
+                    },
+                });
+            } );
+        </script>
+
+        <script>
+            $(document).ready(function () {
+                $('#adminList').DataTable({
+                    "oLanguage": {
+                        "oPaginate":{
+                            "sPrevious" : "vorige",
+                            "sNext" : "volgende"
+                        },
+                        "sSearch": "Zoeken binnen resultaten "
                     },
                     "aoColumnDefs": [
                         { 'bSortable': true, 'aTargets': [ 3 ] }
@@ -53,13 +67,6 @@
                     "aLengthMenu": [6],
                     "bLengthChange": true,
                     "bInfo":true
-                });
-            } );
-        </script>
-
-        <script>
-            $(document).ready(function () {
-                $('#example').DataTable({
                 });
             });
         </script>
