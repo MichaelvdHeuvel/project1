@@ -74,9 +74,7 @@ public class UserController {
         ModelAndView ProfileUserList = new ModelAndView("/profile/profile");
         
          if(result.hasErrors()){
-            
-            
-            return new ModelAndView("user/edituser");
+             return new ModelAndView("user/edituser");
             
         } else {
         

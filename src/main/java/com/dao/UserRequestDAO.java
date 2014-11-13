@@ -36,8 +36,7 @@ public class UserRequestDAO {
         request.setRequestDate(currentDate);
         
         request.setRequester((User)session.getAttribute("loggedInUser"));
-        request.setRequest("Ik wil graag een verzoek indienen voor " + request.getRequest() 
-                + " omdat ik dit op voldoende niveau beheers.");
+        request.setRequest(request.getRequest());
         
         getCurrentSession().save(request);
     }

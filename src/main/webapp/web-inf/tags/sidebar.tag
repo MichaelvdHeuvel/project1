@@ -288,6 +288,14 @@
                         </ul>
                     </li>
                 </c:if>
+                    <li>
+                        <a href="#"><i class="glyphicon glyphicon-user"></i> Profiel<span class="fa arrow"></span></a>
+                        <ul class="nav nav-second-level">
+                            <li>
+                                <a href="${pageContext.request.contextPath}/profile/add/workexperience"><i class="glyphicon glyphicon-briefcase"></i> Werkervaring toevoegen</a>
+                            </li>
+                        </ul>
+                    </li>
             </ul>
             
         </div>

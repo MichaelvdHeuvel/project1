@@ -9,16 +9,13 @@
             <div class="row">
                 <div class="col-sm-6 col-sm-offset-3 col-lg-6 col-lg-offset-3">
                     <h1>Indienen van een verzoek</h1>
-                    <h4 class="text-justify">Vul alleen de naam van het verzoek in. De standaard tekst wordt ook 
-                        meegenomen in het verzoek. op de .... komt de naam van de skill te staan.</h4>
-                    <br/>
-                    <h4>Ik wil graag een verzoek indienen voor .... omdat ik dit op voldoende niveau
-                    beheers.</h4>
+                    
                     <form:form method="POST" commandName="userRequest"
                                action="${pageContext.request.contextPath}/userrequest/add" role="form"> 
                         <div class="form-group right-inner-addon">
                             <i class="glyphicon glyphicon-inbox"></i>
-                            <form:input class="form-control" path="request" placeholder="verzoek" />
+                            <form:textarea class="form-control" path="request" placeholder="verzoek" />
+                            <form:errors path="request"></form:errors>
                         </div>
                            
                         <div class="form-group">    

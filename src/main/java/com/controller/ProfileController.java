@@ -1,13 +1,17 @@
 package com.controller;
 
 import com.model.User;
+import com.model.WorkExperience;
 import com.service.UserService;
+import com.service.WorkExperienceService;
 import java.io.IOException;
 import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 /**
@@ -21,6 +25,8 @@ import org.springframework.web.servlet.ModelAndView;
 public class ProfileController {
     @Autowired
     UserService userService;
+    @Autowired
+    WorkExperienceService workExpService;
     
     /**
      * Mapping for the view of a person's profile.
@@ -62,5 +68,26 @@ public class ProfileController {
             loginView.addObject("user", new User());
             return loginView;
         }
+    }
+    
+    @RequestMapping(value="/add/workexperience", method = RequestMethod.GET)
+    public ModelAndView addWorkExperience(){
+        ModelAndView addWorkExp = new ModelAndView("/profile/addWorkExperience");
+        
+        addWorkExp.addObject("workexperience", new WorkExperience());
+        
+        return addWorkExp;
+    }
+    
+    @RequestMapping(value="/add/workexperience", method = RequestMethod.POST)
+    public ModelAndView addWorkExperience(@ModelAttribute WorkExperience workexperience, HttpSession session){
+        ModelAndView profileView = new ModelAndView("/login/login");
+        //User loggedInUser = (User)session.getAttribute("loggedInUser");
+        
+        //workExpService.addWorkExperience(workexperience);
+        
+        profileView.addObject("user", new User());
+        
+        return profileView;
     }
 }

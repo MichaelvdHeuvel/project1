@@ -48,7 +48,7 @@
                 </ul> 
 
                 <c:if test="${user.id == loggedInUser.id}">
-                    <ul class="list-group hidden-xs">
+                    <ul class="list-group">
                         <li class="list-group-item text-muted">
                             Instellingen <i class="fa fa-dashboard fa-1x"></i>
                         </li>
@@ -66,7 +66,7 @@
                                 </a>
                             </span> &nbsp;
                         </li>
-                        <li class="list-group-item text-right">
+                        <li class="list-group-item text-right hidden-xs">
                             <span class="pull-left">
                                 <a href="${pageContext.request.contextPath}/createPdf/${user.id}"> 
                                     <strong>CV. genereren</strong>
@@ -101,9 +101,6 @@
                                 <br/><br/><br/>
                                 werk
                                 <ul>
-                                    <c:if test="${user.id == loggedInUser.id}">
-                                        <li>Personeelsnummer: ${user.id}</li>
-                                        </c:if>
                                     <li>Afdeling: Web Design</li>
                                     <li>Taak: 
                                         <c:if test="${user.role == 1}">
