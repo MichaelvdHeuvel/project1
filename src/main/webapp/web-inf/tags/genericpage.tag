@@ -30,6 +30,7 @@
         </div><!-- /.wrapper -->
 
         <script src="<%=request.getContextPath()%>/resources/js/jquery-1.11.1.js"></script>
+        <script src="<%=request.getContextPath()%>/resources/js/jqueryui-1.11.2.js"></script>
         <script src="<%=request.getContextPath()%>/resources/js/bootstrap.min.js"></script>
         <script src="<%=request.getContextPath()%>/resources/js/plugins/metisMenu/metisMenu.min.js"></script>
         <script src="<%=request.getContextPath()%>/resources/js/sb-admin-2.js"></script>
@@ -76,5 +77,17 @@
                 $('#message').fadeOut('long');
             }, 2000); // <-- time in milliseconds
         </script>
+        
+        <script>
+            $(function() {
+              $( "#workExpStartDate" ).datepicker({ dateFormat: 'dd/mm/yy'}).val();
+            });
+            
+            $(function() {
+              $( "#workExpEndDate" ).datepicker({ dateFormat: 'dd/mm/yy'}).val();
+            });
+        </script>
+        
+        
     </body>
 </html>
