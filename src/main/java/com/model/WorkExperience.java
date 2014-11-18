@@ -13,6 +13,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
+import org.hibernate.validator.constraints.NotEmpty;
 
 /**
  *
@@ -24,8 +25,14 @@ public class WorkExperience implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
+    
+    @NotEmpty( message = "Het veld mag niet leeg zijn.")
     private String company;
+    
+    @NotEmpty( message = "Het veld mag niet leeg zijn.")
     private String description;
+    
+    @NotEmpty( message = "Het veld mag niet leeg zijn.")
     private String function;
     
     @ManyToOne

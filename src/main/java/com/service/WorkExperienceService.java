@@ -24,8 +24,8 @@ public class WorkExperienceService {
     @Autowired
     private WorkExperienceDAO workExpDAO;
     
-    public void addWorkExperience(WorkExperience exp){
-        workExpDAO.addWorkExperience(exp);
+    public void addWorkExperience(WorkExperience exp, HttpSession session){
+        workExpDAO.addWorkExperience(exp, session);
     }
     
     public WorkExperience getWorkExperience(int id){
@@ -40,7 +40,7 @@ public class WorkExperienceService {
         workExpDAO.setActive(exp);
     }
     
-    public List<WorkExperience> getWorkExperience(HttpSession session){
-        return workExpDAO.getWorkExperience(session);
+    public List<WorkExperience> getAllWorkExperience(int id){
+        return workExpDAO.getActiveWorkExperience(id);
     }
 }

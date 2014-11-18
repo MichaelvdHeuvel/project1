@@ -16,27 +16,32 @@
                                 <td>Bedrijf</td>
                                 <td>
                                     <form:input path="company" class="form-control" />
+                                    <form:errors path="company"></form:errors>
                                 </td>
                             </tr>
                             <tr>
                                 <td>Functie</td>
                                 <td><form:input path="description" class="form-control" /></td>
+                                <form:errors path="description"></form:errors>
                             </tr>
                             <tr>
                                 <td>StartDatum</td>
-                                <td><form:input path="startDate" class="form-control" /></td>
+                                <td><form:input path="startDate" class="form-control" id="workExpStartDate"/></td>
+                                <%--<form:errors path="strartDate"></form:errors>--%>
                             </tr>
                             <tr>
                                 <td>Einddatum</td>
-                                <td><form:input path="endDate" class="form-control" /></td>
+                                <td><form:input path="endDate" class="form-control" id="workExpEndDate" /></td>
+                                <%--<form:errors path="endDate"></form:errors>--%>
                             </tr>
                             <tr>
                                 <td>Functie omschrijving</td>
-                                <td><form:textarea path="description" class="form-control"/></td>
+                                <td><form:input path="description" class="form-control"/></td>
+                                <form:errors path="description"></form:errors>
                             </tr>
                             <tr>
                                 <td><button type="submit" class="btn btn-success">Voeg Toe</button></td>
-                                <td><a class="btn btn-danger pull-right" href="${pageContext.request.contextPath}/index/index">Annuleer</a></td>
+                                <td><a class="btn btn-danger pull-right" href="${pageContext.request.contextPath}/">Annuleer</a></td>
                             </tr>
                         </tbody>
                     </table>
@@ -44,5 +49,5 @@
             </div>
         </div>
     </jsp:body>
-    
+
 </t:genericpage>

@@ -22,7 +22,10 @@ public class WorkExperienceDAO {
         return sessionFactory.getCurrentSession();
     }
     
-    public void addWorkExperience(WorkExperience exp){
+    public void addWorkExperience(WorkExperience exp, HttpSession session){
+        User user = (User)session.getAttribute("loggedInUser");
+        
+        exp.setUser(user);
         getCurrentSession().save(exp);
     }
     
@@ -54,11 +57,11 @@ public class WorkExperienceDAO {
     }
     
     @SuppressWarnings("unchecked")
-    public List<WorkExperience> getWorkExperience(HttpSession session) {
-        User user = (User)session.getAttribute("loggedInUser");
+    public List<WorkExperience> getActiveWorkExperience(int id) {
         
-        return getCurrentSession().createQuery("from WorkExperience we join we.user user where user.emailAddress=?")
-                .setParameter(0, user.getEmailAddress())
+        return getCurrentSession().createQuery("from WorkExperience where user_id=? AND active=?")
+                .setParameter(0, id)
+                .setParameter(1, 1)
                 .list();
     }
 }

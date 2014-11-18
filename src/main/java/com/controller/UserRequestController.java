@@ -84,7 +84,7 @@ public class UserRequestController {
             homeView.addObject("message", "Er zijn geen verzoeken meer!");
             return homeView;
         } else {
-            ModelAndView deleteUserRequest = new ModelAndView("/userrequest/list");
+            ModelAndView deleteUserRequest = new ModelAndView("/userrequest/userrequestlist");
             session.setAttribute("requestList", userRequestService.getUserRequests());
             session.setAttribute("requestListSize", userRequestService.getUserRequests().size());
 
