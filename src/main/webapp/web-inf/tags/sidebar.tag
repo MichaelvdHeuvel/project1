@@ -277,7 +277,7 @@
                         <ul class="nav nav-second-level">
                             <c:if test="${loggedInUser.role != '3'}">
                                 <li>
-                                    <a href="${pageContext.request.contextPath}/project/list"><i class="glyphicon glyphicon-list-alt"></i> Lijst</a>
+                                    <a href="${pageContext.request.contextPath}/project/list"><i class="glyphicon glyphicon-list-alt"></i> Overzicht</a>
                                 </li>
                             </c:if>
                             <c:if test="${loggedInUser.role == '2'}">
@@ -288,6 +288,35 @@
                         </ul>
                     </li>
                 </c:if>
+                     <c:if test="${loggedInUser.role == '3'}">
+                    <li>
+                        <a href="#"><i class="glyphicon glyphicon-briefcase"></i> Skill Beheer <span class="fa arrow"></span></a>
+                        <ul class="nav nav-second-level">
+
+                            <li>
+                                <a href="${pageContext.request.contextPath}/skill/list"> Overzicht</a>
+                            </li>
+
+                            <li>
+                                <a href="${pageContext.request.contextPath}/skill/add"> Aanmaken</a>
+                            </li>
+
+                            <li><li>
+                                <a href="#"><i class="glyphicon glyphicon-tags"></i>&nbsp; Categorieen <span class="fa arrow"></span></a>
+                                <ul class="nav nav-third-level">
+                                    <li>
+                                        <a href="${pageContext.request.contextPath}/category/list">Overzicht</a>
+                                    </li>
+                                    <li>
+                                        <a href="${pageContext.request.contextPath}/category/add">Aanmaken</a>
+                                    </li>
+                                </ul>
+                                <!-- /.nav-third-level -->
+                            </li>
+                    </li>
+                </ul>
+                </li>
+            </c:if>
             </ul>
             
         </div>

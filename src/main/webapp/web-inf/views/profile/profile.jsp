@@ -61,8 +61,8 @@
                         </li>
                         <li class="list-group-item text-right">
                             <span class="pull-left">
-                                <a href="${pageContext.request.contextPath}/resume/edit/${user.id}"> 
-                                    <strong>CV. instellingen</strong>
+                                <a href="${pageContext.request.contextPath}/skill/listProfile"> 
+                                    <strong>Vaardigheden bewerken</strong>
                                 </a>
                             </span> &nbsp;
                         </li>
@@ -121,6 +121,22 @@
                                 </ul>
                             </div><!--./col-sm-6-->
                         </div><!--./row -->
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <h3>Vaardigheden</h3>
+                                <c:forEach var="skill" items="${skillList}">
+                                            <!-- Per skill wordt nu een rij aangemaakt met daarin zijn gegevens -->
+                                            <table>
+                                                <tr>
+                                                    <td>${skill.skillId}</td>
+                                                    <td>${skill.name}</td>
+                                                    <td>${skill.category.name}</td>
+              
+                                                </tr>
+                                            </table>
+                                            </c:forEach>
+                            </div><!--./col-sm-12-->
+                        </div>
                         <!--<hr/>
                         <!--
                         <div class="row">
