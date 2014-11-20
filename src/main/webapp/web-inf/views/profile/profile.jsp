@@ -42,13 +42,10 @@
                     <li class="list-group-item text-right"><span class="pull-left">
                             <strong>Projecten nu:</strong></span> 1
                     </li>
-                    <li class="list-group-item text-right"><span class="pull-left">
-                            <strong>ervaring (jaren):</strong></span> 16
-                    </li>
                 </ul> 
 
                 <c:if test="${user.id == loggedInUser.id}">
-                    <ul class="list-group hidden-xs">
+                    <ul class="list-group">
                         <li class="list-group-item text-muted">
                             Instellingen <i class="fa fa-dashboard fa-1x"></i>
                         </li>
@@ -66,7 +63,7 @@
                                 </a>
                             </span> &nbsp;
                         </li>
-                        <li class="list-group-item text-right">
+                        <li class="list-group-item text-right hidden-xs">
                             <span class="pull-left">
                                 <a href="${pageContext.request.contextPath}/createPdf/${user.id}"> 
                                     <strong>CV. genereren</strong>
@@ -101,9 +98,6 @@
                                 <br/><br/><br/>
                                 werk
                                 <ul>
-                                    <c:if test="${user.id == loggedInUser.id}">
-                                        <li>Personeelsnummer: ${user.id}</li>
-                                        </c:if>
                                     <li>Afdeling: Web Design</li>
                                     <li>Taak: 
                                         <c:if test="${user.role == 1}">
@@ -211,32 +205,28 @@
                         <!--</div><!--./row-->
                         <!--</div><!--./col-sm-12-->
                         <!--</div><!--./row -->
-                        <!--<div class="row container-fluid">
-                            <hr />
-                            <div class="col-sm-12">
-                                <h3>Werkervaring</h3>
-                                <p>
-                                    <strong>Login BV, Goor, 2012:</strong><br />
-                                    Ontwikkelen van server, pc en “smart device / embedded” software systemen.
-                                </p>
-                                <p>
-                                    <strong>Betagraphics, Hengelo, 2011:</strong><br />
-                                    Application consultancy m.b.t. Engineering Document Management systemen.
-                                </p>
-                                <p>
-                                    <strong>Quatro Software, Enschede, 2011:</strong><br />
-                                    Ontwikkelen van maatwerk calculatie advies software. Zowel als stand-alone 
-                                    PC applicatie, als in de vorm van een interactieve web applicatie.
-                                </p>
-                                <p>
-                                    <strong>Project via een lokaal IT bedrijf 
-                                        in Goor voor de gemeente Amsterdam, 2010:</strong><br />
-                                    Ontwikkelen van een webservice applicatie ten behoeve van parkeerbeheer diensten 
-                                    in aansluiting op een centrale database van het RDW. Ontwikkeltools: Visual Studio, 
-                                    SQL Server, ASP.NET, Windows Communication Foundation (WCF).
-                                </p>
-                            </div>
-                        </div>-->
+                        <!--<div class="row container-fluid">-->
+                        <hr /> 
+                        <div class="col-sm-12">
+                            <h3>Werkervaring</h3>
+                        
+                            <c:choose>
+                                <c:when test="${workExpSize != 0}">
+                                    <c:forEach var="workExp" items="${workExp}">
+                                        <p>
+                                            <strong>${workExp.company}, ${workExp.function}</strong><br />
+                                            <h6>${workExp.startDate.year+1900}-${workExp.endDate.year+1900}</h6>
+                                            ${workExp.description}
+                                        </p>
+                                    </c:forEach>
+                                </c:when>
+                                <c:otherwise>
+                                    <p>
+                                        Er is nog geen werkervaring toegevoegd aan dit account!
+                                    </p>
+                                </c:otherwise>
+                            </c:choose>
+                        </div>
                     </div>
                 </div>
             </div>

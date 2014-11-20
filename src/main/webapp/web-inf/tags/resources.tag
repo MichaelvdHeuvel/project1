@@ -14,6 +14,8 @@
 
 <link href="<%=request.getContextPath()%>/resources/css/sb-admin-2.css" rel="stylesheet">
 
+<link href="<%=request.getContextPath()%>/resources/css/jquery-ui.css" rel="stylesheet">
+
 
 <link href="<%=request.getContextPath()%>/resources/font-awesome-4.1.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
 

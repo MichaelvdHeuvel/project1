@@ -27,3 +27,8 @@
 table{
     background:#fff;
 }
+
+/*Only resizing textarea vertically*/
+textarea {
+    resize: vertical;
+}

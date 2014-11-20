@@ -5,6 +5,7 @@
  */
 package com.model;
 
+import java.io.Serializable;
 import java.util.Date;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -12,13 +13,14 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
+import org.hibernate.validator.constraints.NotEmpty;
 
 /**
  *
  * @author David
  */
 @Entity
-public class UserRequest {
+public class UserRequest implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
@@ -26,6 +28,7 @@ public class UserRequest {
     @ManyToOne
     private User requester;
     
+    @NotEmpty( message = "Vul a.u.b. uw verzoek in.")
     private String request;
     
     @Temporal(javax.persistence.TemporalType.TIMESTAMP)

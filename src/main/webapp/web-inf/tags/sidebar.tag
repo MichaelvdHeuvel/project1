@@ -26,25 +26,25 @@
                             ${requestListSize}
                         </span>  
                     </c:if>
-                        <i class="fa fa-caret-down"></i>
+                    <i class="fa fa-caret-down"></i>
                 </a>
                 <ul class="dropdown-menu dropdown-messages">
                     <c:choose>
                         <c:when test="${requestList.size() != 0}">
                             <c:forEach begin="0" end="3" var="request" items="${requestList}">
                                 <li>
-                                <a href="#">
-                                    <div>
-                                        <strong>${request.requester.firstName} ${request.requester.lastName}</strong>
-                                        <span class="pull-right text-muted">
-                                            <em>${request.requestDate.date}/${request.requestDate.month+1}/${request.requestDate.year+1900}</em>
-                                        </span>
-                                    </div>
-                                    <div>${request.request}</div>
-                                </a>
-                            </li>
-                            <li class="divider"></li>
-                            </c:forEach>
+                                    <a href="#">
+                                        <div>
+                                            <strong>${request.requester.firstName} ${request.requester.lastName}</strong>
+                                            <span class="pull-right text-muted">
+                                                <em>${request.requestDate.date}/${request.requestDate.month+1}/${request.requestDate.year+1900}</em>
+                                            </span>
+                                        </div>
+                                        <div>${request.request}</div>
+                                    </a>
+                                </li>
+                                <li class="divider"></li>
+                                </c:forEach>
                             <li>
                                 <a class="text-center" href="${pageContext.request.contextPath}/admin/userrequestlist">
                                     <strong>Lees alle verzoeken</strong>
@@ -138,7 +138,7 @@
                         </a>
                     </li>
                 </ul>
-                <!-- /.dropdown-tasks -->
+            <!-- /.dropdown-tasks -->
             <!--</li>
             <!-- /.dropdown -->
             <!--<li class="dropdown">
@@ -198,7 +198,7 @@
                         </a>
                     </li>
                 </ul>
-                <!-- /.dropdown-alerts -->
+            <!-- /.dropdown-alerts -->
             <!--</li>
         </c:if>
         <!-- /.dropdown -->
@@ -208,7 +208,7 @@
             </a>
             <ul class="dropdown-menu dropdown-user">
                 <li><a href="${pageContext.request.contextPath}/profile/user/${loggedInUser.id}"><i class="fa fa-user fa-fw"></i>
-                    ${loggedInUser.firstName}
+                        ${loggedInUser.firstName}
                     </a>
                 </li>
                 <li><a href="${pageContext.request.contextPath}/upload/profile/image"><i class="fa fa-picture-o"></i> wijzig plaatje</a>
@@ -228,20 +228,20 @@
     </ul>
     <!-- /.navbar-top-links -->
 
-    
+
     <div class="navbar-default sidebar" role="navigation">
         <div class="sidebar-nav navbar-collapse">
-            
+
             <ul class="nav" id="side-menu">
-                
-                    <li class="sidebar-search">
-                        
-                        <form:form method="POST" commandName="user"
-                                   action="${pageContext.request.contextPath}/searchresult">
+
+                <li class="sidebar-search">
+
+                    <form:form method="POST" commandName="user"
+                               action="${pageContext.request.contextPath}/searchresult">
                         <div class="input-group custom-search-form">
                             <input type="text" class="form-control" 
-                                placeholder="Zoeken..." path="firstName" id="firstName" name="firstName">
-                            
+                                   placeholder="Zoeken..." path="firstName" id="firstName" name="firstName">
+
                             <span class="input-group-btn">
                                 <button class="btn btn-default" type="submit">
                                     <i class="glyphicon glyphicon-search"></i>
@@ -250,9 +250,9 @@
                         </div>
 
                         <!-- /input-group -->
-                        </form:form>
-                    </li>
-                
+                    </form:form>
+                </li>
+
                 <li>
                     <a href="${pageContext.request.contextPath}/"><i class="glyphicon glyphicon-home"></i> Home</a>
                 </li> 
@@ -281,9 +281,9 @@
                                 </li>
                             </c:if>
                             <c:if test="${loggedInUser.role == '2'}">
-                            <li>
-                                <a href="${pageContext.request.contextPath}/project/add"><i class="fa fa-edit fa-fw"></i> Aanmaken</a>
-                            </li>
+                                <li>
+                                    <a href="${pageContext.request.contextPath}/project/add"><i class="fa fa-edit fa-fw"></i> Aanmaken</a>
+                                </li>
                             </c:if>    
                         </ul>
                     </li>
@@ -317,8 +317,54 @@
                 </ul>
                 </li>
             </c:if>
+                <c:if test="${loggedInUser.role == '3'}">
+                    <li>
+                        <a href="#"><i class="glyphicon glyphicon-briefcase"></i> Skill Beheer <span class="fa arrow"></span></a>
+                        <ul class="nav nav-second-level">
+
+                            <li>
+                                <a href="${pageContext.request.contextPath}/skill/list"> Overzicht</a>
+                            </li>
+
+                            <li>
+                                <a href="${pageContext.request.contextPath}/skill/add"> Aanmaken</a>
+                            </li>
+
+                            <li>
+                                <a href="#"><i class="glyphicon glyphicon-tags"></i>&nbsp; Categorieen <span class="fa arrow"></span></a>
+                                <ul class="nav nav-third-level">
+                                    <li>
+                                        <a href="${pageContext.request.contextPath}/category/list">Overzicht</a>
+                                    </li>
+                                    <li>
+                                        <a href="${pageContext.request.contextPath}/category/add">Aanmaken</a>
+                                    </li>
+                                </ul>
+                                <!-- /.nav-third-level -->
+                            </li>
+                        </ul>
+                    </li>
+                </c:if>
+                <li>
+                    <a href="#"><i class="glyphicon glyphicon-user"></i> Profiel<span class="fa arrow"></span></a>
+                    <ul class="nav nav-second-level">
+                        <li>
+                            <a href="#"><i class="glyphicon glyphicon-tags"></i>&nbsp; Werkervaring <span class="fa arrow"></span></a>
+                                <ul class="nav nav-third-level">
+                                    <li>
+                                        <a href="${pageContext.request.contextPath}/profile/add/workexperience">
+                                            <i class="glyphicon glyphicon-briefcase"></i> Toevoegen</a>
+                                    </li>
+                                    <li>
+                                        <a href="${pageContext.request.contextPath}/profile/list/workexperience">
+                                            <i class="glyphicon glyphicon-edit"></i> Overzicht</a>
+                                    </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
             </ul>
-            
+
         </div>
         <!-- /.sidebar-collapse -->
     </div>
