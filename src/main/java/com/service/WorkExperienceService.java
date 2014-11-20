@@ -40,7 +40,11 @@ public class WorkExperienceService {
         workExpDAO.setActive(exp);
     }
     
-    public List<WorkExperience> getAllWorkExperience(int id){
+    public List<WorkExperience> getActiveWorkExperience(int id){
         return workExpDAO.getActiveWorkExperience(id);
+    }
+    
+    public List<WorkExperience> getAllWorkExperience(int id){
+        return workExpDAO.getAllWorkExperience(id);
     }
 }

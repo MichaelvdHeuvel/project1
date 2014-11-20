@@ -6,7 +6,6 @@ import com.service.UserService;
 import com.service.WorkExperienceService;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
-import java.util.Calendar;
 import java.util.Date;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
@@ -70,12 +69,9 @@ public class ProfileController {
             if (user != null) {
                 ModelAndView profileView = new ModelAndView("/profile/profile");
 
-                int year = Calendar.getInstance().get(Calendar.YEAR);
-
                 profileView.addObject("user", userService.getUser(id));
-                profileView.addObject("currentYear", year);
-                profileView.addObject("workExp", workExpService.getAllWorkExperience(id));
-                profileView.addObject("workExpSize", workExpService.getAllWorkExperience(id).size());
+                profileView.addObject("workExp", workExpService.getActiveWorkExperience(id));
+                profileView.addObject("workExpSize", workExpService.getActiveWorkExperience(id).size());
 
                 return profileView;
             } else {
@@ -113,19 +109,102 @@ public class ProfileController {
     }
 
     @RequestMapping(value = "/add/workexperience", method = RequestMethod.POST)
-    public ModelAndView addWorkExperience(@ModelAttribute("workexperience") @Valid WorkExperience workexperience,
-            BindingResult result, HttpSession session) {
-        ModelAndView profileView = new ModelAndView("/index/index");
+    public ModelAndView addWorkExperience(@ModelAttribute("workexperience")
+            @Valid WorkExperience workexperience, HttpSession session, BindingResult result) {
+        //get the user out of the session
+        User loggedInUser = (User) session.getAttribute("loggedInUser");
 
-        if (result.hasErrors()) {
-            
-            profileView.addObject("workexperience", new WorkExperience());
-            return new ModelAndView("/profile/addWorkExperience");
-        } else {
-            workExpService.addWorkExperience(workexperience, session);
-            profileView.addObject("message", "werkervaring is succesvol toegevoegd");
-            profileView.addObject("user", new User());
-        }
+        ModelAndView profileView = new ModelAndView("/profile/listworkexperience");
+//        if(result.hasErrors()){
+//            profileView = new ModelAndView("/profile/addWorkExperience");
+//        }else{
+        workExpService.addWorkExperience(workexperience, session);
+        profileView.addObject("message", "werkervaring is succesvol toegevoegd");
+        profileView.addObject("workExpList", workExpService.getAllWorkExperience(loggedInUser.getId()));
+        profileView.addObject("workExpSize", workExpService.getAllWorkExperience(loggedInUser.getId()).size());
+//        }
         return profileView;
+    }
+
+    @RequestMapping(value = "/list/workexperience", method = RequestMethod.GET)
+    public ModelAndView listWorkExperience(HttpSession session) {
+        //get the user out of the session
+        User loggedInUser = (User) session.getAttribute("loggedInUser");
+
+        //if a user object is found, redirect to the intended page
+        if (loggedInUser != null) {
+
+            int id = loggedInUser.getId();
+            ModelAndView listWorkExp = new ModelAndView("/profile/listworkexperience");
+
+            listWorkExp.addObject("workExpList", workExpService.getAllWorkExperience(id));
+            listWorkExp.addObject("workExpSize", workExpService.getAllWorkExperience(id).size());
+
+            return listWorkExp;
+        } else {
+            ModelAndView loginView = new ModelAndView("/login/login");
+
+            loginView.addObject("user", new User());
+            return loginView;
+        }
+    }
+
+    @RequestMapping(value = "/edit/workexperience/{id}", method = RequestMethod.GET)
+    public ModelAndView editWorkExperience(@PathVariable int id, HttpSession session) {
+        //get the user out of the session
+        User loggedInUser = (User) session.getAttribute("loggedInUser");
+
+        //if a user object is found, redirect to the intended page
+        if (loggedInUser != null) {
+            ModelAndView addWorkExp = new ModelAndView("/profile/editWorkExperience");
+
+            addWorkExp.addObject("workexperience", workExpService.getWorkExperience(id));
+
+            return addWorkExp;
+        } else {
+            ModelAndView loginView = new ModelAndView("/login/login");
+
+            loginView.addObject("user", new User());
+            return loginView;
+        }
+    }
+    
+    @RequestMapping(value = "/edit/workexperience", method = RequestMethod.POST)
+    public ModelAndView postEditWorkExperience(@ModelAttribute("workexperience") WorkExperience workExp,
+            HttpSession session){
+        //get the user out of the session
+        User loggedInUser = (User) session.getAttribute("loggedInUser");
+        ModelAndView listWorkExp = new ModelAndView("/profile/listworkexperience");
+        
+          workExpService.updateWorkExperience(workExp);
+        
+        listWorkExp.addObject("workExpList", workExpService.getAllWorkExperience(loggedInUser.getId()));
+        listWorkExp.addObject("workExpSize", workExpService.getAllWorkExperience(loggedInUser.getId()).size());
+        
+        return listWorkExp;
+        
+    }
+
+    @RequestMapping(value = "/workexperience/visibility/{id}", method = RequestMethod.GET)
+    public ModelAndView deactivateWorkExperience(@PathVariable int id, HttpSession session) {
+        User loggedInUser = (User) session.getAttribute("loggedInUser");
+        if (loggedInUser != null) {
+            ModelAndView workExpList = new ModelAndView("/profile/listworkexperience");
+
+            workExpService.setActive(workExpService.getWorkExperience(id));
+
+            int userId = loggedInUser.getId();
+
+            workExpList.addObject("workExpList", workExpService.getAllWorkExperience(userId));
+            workExpList.addObject("workExpSize", workExpService.getAllWorkExperience(userId).size());
+
+            return workExpList;
+        } else {
+            ModelAndView loginView = new ModelAndView("/login/login");
+
+            loginView.addObject("user", new User());
+
+            return loginView;
+        }
     }
 }

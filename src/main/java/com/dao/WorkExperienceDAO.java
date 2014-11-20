@@ -51,7 +51,11 @@ public class WorkExperienceDAO {
     public void setActive(WorkExperience exp){
         WorkExperience expToUpdate = getWorkExperience(exp.getId());
         
-        expToUpdate.setActive(exp.getActive());
+        if(expToUpdate.getActive() == 0){
+            expToUpdate.setActive(1);
+        }else{
+            expToUpdate.setActive(0);
+        }
         
         getCurrentSession().update(expToUpdate);
     }
@@ -62,6 +66,14 @@ public class WorkExperienceDAO {
         return getCurrentSession().createQuery("from WorkExperience where user_id=? AND active=?")
                 .setParameter(0, id)
                 .setParameter(1, 1)
+                .list();
+    }
+    
+    @SuppressWarnings("unchecked")
+    public List<WorkExperience> getAllWorkExperience(int id) {
+        
+        return getCurrentSession().createQuery("from WorkExperience where user_id=?")
+                .setParameter(0, id)
                 .list();
     }
 }

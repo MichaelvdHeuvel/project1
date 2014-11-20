@@ -51,7 +51,30 @@
                 });
             } );
         </script>
-
+<script>
+            $(document).ready(function () {
+                $('#skillTable').DataTable({
+                    "language": {
+                        "lengthMenu": " _MENU_ resultaten per pagina",
+                        "zeroRecords": "Geen items gevonden",
+                        "info": "pagina _PAGE_ van de _PAGES_",
+                        "infoEmpty": "Er zijn nog geen items toegevoegd",
+                        "oPaginate": {
+                            "sPrevious": "vorige",
+                            "sNext": "volgende"
+                        },
+                        "sSearch": "Zoeken:",
+                        "infoFiltered": "(filtered from _MAX_ total records)"
+                    },
+                    "aoColumnDefs": [
+                        {'bSortable': false, 'aTargets': [2]}
+                    ],
+                    "aLengthMenu": [10, 25, 50],
+                    "bLengthChange": true,
+                    "bInfo": true
+                });
+            });
+        </script>
         <script>
             $(document).ready(function () {
                 $('#adminList').DataTable({
@@ -68,6 +91,30 @@
                     "aLengthMenu": [6],
                     "bLengthChange": true,
                     "bInfo":true
+                });
+            });
+        </script>
+        <script>
+            $(document).ready(function () {
+                $('#profileSkillTable').DataTable({
+                    "language": {
+                        "lengthMenu": " _MENU_ resultaten per pagina",
+                        "zeroRecords": "Geen items gevonden",
+                        "info": "pagina _PAGE_ van de _PAGES_",
+                        "infoEmpty": "Er zijn nog geen items toegevoegd",
+                        "oPaginate": {
+                            "sPrevious": "vorige",
+                            "sNext": "volgende"
+                        },
+                        "sSearch": "Zoeken:",
+                        "infoFiltered": "(filtered from _MAX_ total records)"
+                    },
+                    "aoColumnDefs": [
+                        {'bSortable': false, 'aTargets': [2]}
+                    ],
+                    "aLengthMenu": [10, 25, 50],
+                    "bLengthChange": true,
+                    "bInfo": true
                 });
             });
         </script>

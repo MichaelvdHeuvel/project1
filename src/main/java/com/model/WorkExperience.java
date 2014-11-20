@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.model;
 
 import java.io.Serializable;
@@ -13,6 +8,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
+import javax.validation.constraints.NotNull;
 import org.hibernate.validator.constraints.NotEmpty;
 
 /**
@@ -26,13 +22,13 @@ public class WorkExperience implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
     
-    @NotEmpty( message = "Het veld mag niet leeg zijn.")
+//    @NotEmpty( message = "Het veld mag niet leeg zijn.")
     private String company;
     
-    @NotEmpty( message = "Het veld mag niet leeg zijn.")
+    //@NotEmpty( message = "Het veld mag niet leeg zijn.")
     private String description;
     
-    @NotEmpty( message = "Het veld mag niet leeg zijn.")
+//    @NotEmpty( message = "Het veld mag niet leeg zijn.")
     private String function;
     
     @ManyToOne

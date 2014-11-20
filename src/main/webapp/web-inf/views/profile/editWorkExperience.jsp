@@ -9,18 +9,20 @@
             <h1>Werkervaring toevoegen</h1>
 
             <div class="table-responcive table">
-                <form:form method="POST" commandName="workexperience" action="${pageContext.request.contextPath}/profile/add/workexperience">  
+                <form:form method="POST" commandName="workexperience" action="${pageContext.request.contextPath}/profile/edit/workexperience">  
                     <table class="table" border="0px">
                         <tbody>
                             <tr>
                                 <td>Bedrijf</td>
-                                <td><form:input path="company" class="form-control" /></td>
-                                <%--<form:errors path="company"></form:errors>--%>
+                                <td>
+                                    <form:input path="company" class="form-control" />
+                                    <%--<form:errors path="company"></form:errors>--%>
+                                </td>
                             </tr>
                             <tr>
                                 <td>Functie</td>
                                 <td><form:input path="function" class="form-control"/></td>
-                                <%--<form:errors path="function"></form:errors>--%>
+                                <%--<form:errors path="description"></form:errors>--%>
                             </tr>
                             <tr>
                                 <td>StartDatum</td>
@@ -32,12 +34,12 @@
                             </tr>
                             <tr>
                                 <td>Functie omschrijving</td>
-                                <td><form:input path="description" class="form-control"/></td>
+                                <td><form:textarea path="description" class="form-control"/></td>
                                 <%--<form:errors path="description"></form:errors>--%>
                             </tr>
                             <tr>
                                 <td><button type="submit" class="btn btn-success">Voeg Toe</button></td>
-                                <td><a class="btn btn-danger pull-right" href="${pageContext.request.contextPath}/">Annuleer</a></td>
+                                <td><a class="btn btn-danger pull-right" href="${pageContext.request.contextPath}/profile/list/workexperience">Annuleer</a></td>
                             </tr>
                         </tbody>
                     </table>
