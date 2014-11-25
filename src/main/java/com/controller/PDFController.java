@@ -1,12 +1,13 @@
 package com.controller;
 
-import com.itextpdf.text.Document;
 import com.itextpdf.text.DocumentException;
 import com.lib.PDF;
 import com.model.User;
+import com.model.WorkExperience;
 import com.service.UserService;
-import java.io.ByteArrayOutputStream;
+import com.service.WorkExperienceService;
 import java.io.IOException;
+import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,39 +23,45 @@ public class PDFController {
     @Autowired
     private UserService userService;
 
+    @Autowired
+    private WorkExperienceService workExpService;
+
     @RequestMapping(value = "/createPdf/{id}", method = RequestMethod.GET)
-    public ModelAndView showPdf(HttpSession session, @PathVariable int id, HttpServletRequest request) 
+    public ModelAndView showPdf(HttpSession session, @PathVariable int id, HttpServletRequest request)
             throws DocumentException, IOException {
         User loggedInUser = (User) session.getAttribute("loggedInUser");
 
         //if a user object is found, redirect to the intended page
-        if(loggedInUser != null){
+        if (loggedInUser != null) {
             User user = userService.getUser(id);
-        
+            System.out.println("sizee: " + workExpService.getActiveWorkExperience(id).size());
+            List<WorkExperience> work = workExpService.getActiveWorkExperience(id);
+            System.out.println("sizee2: " + work.size());
+
             //check if the user exists.
-            if(user != null && user.getId() == loggedInUser.getId()){
+            if (user != null && user.getId() == loggedInUser.getId()) {
                 ModelAndView profileView = new ModelAndView("/profile/profile");
 
-                PDF pdf = new PDF(userService.getUser(id), request);
+                PDF pdf = new PDF(userService.getUser(id), work, request);
                 pdf.createPDF();
-                
+
                 profileView.addObject("message", "pdf is uitgeprint");
-                
+
                 profileView.addObject("user", userService.getUser(id));
 
                 return profileView;
-            }else{
+            } else {
                 ModelAndView profileViewNot = new ModelAndView("/index/index");
                 profileViewNot.addObject("error", "U mag deze cv niet printen");
                 return profileViewNot;
             }
-    }  else{
+        } else {
             ModelAndView loginView = new ModelAndView("/login/login");
-        
+
             loginView.addObject("user", new User());
             return loginView;
         }
-}
+    }
 
 //    public void buildPdfDocument(User userList) throws DocumentException {
 //       
