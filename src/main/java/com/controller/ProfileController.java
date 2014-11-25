@@ -158,7 +158,7 @@ public class ProfileController {
         if (loggedInUser != null) {
             ModelAndView addWorkExp = new ModelAndView("/profile/editWorkExperience");
 
-            addWorkExp.addObject("workexperience", workExpService.getWorkExperience(id));
+            addWorkExp.addObject("workexp", workExpService.getWorkExperience(id));
 
             return addWorkExp;
         } else {
@@ -168,21 +168,21 @@ public class ProfileController {
             return loginView;
         }
     }
-    
+
     @RequestMapping(value = "/edit/workexperience", method = RequestMethod.POST)
-    public ModelAndView postEditWorkExperience(@ModelAttribute("workexperience") WorkExperience workExp,
-            HttpSession session){
+    public ModelAndView postEditWorkExperience(@ModelAttribute("workexp") WorkExperience workExp,
+            HttpSession session) {
         //get the user out of the session
         User loggedInUser = (User) session.getAttribute("loggedInUser");
         ModelAndView listWorkExp = new ModelAndView("/profile/listworkexperience");
-        
-          workExpService.updateWorkExperience(workExp);
-        
+
+        workExpService.updateWorkExperience(workExp);
+
         listWorkExp.addObject("workExpList", workExpService.getAllWorkExperience(loggedInUser.getId()));
         listWorkExp.addObject("workExpSize", workExpService.getAllWorkExperience(loggedInUser.getId()).size());
-        
+
         return listWorkExp;
-        
+
     }
 
     @RequestMapping(value = "/workexperience/visibility/{id}", method = RequestMethod.GET)
