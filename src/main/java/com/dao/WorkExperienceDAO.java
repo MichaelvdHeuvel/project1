@@ -2,6 +2,7 @@ package com.dao;
 
 import com.model.User;
 import com.model.WorkExperience;
+import java.util.ArrayList;
 import java.util.List;
 import javax.servlet.http.HttpSession;
 import org.hibernate.Session;
@@ -63,7 +64,7 @@ public class WorkExperienceDAO {
     @SuppressWarnings("unchecked")
     public List<WorkExperience> getActiveWorkExperience(int id) {
         
-        return getCurrentSession().createQuery("from WorkExperience where user_id=? AND active=?")
+        return (List<WorkExperience>) getCurrentSession().createQuery("from WorkExperience where user_id=? AND active=?")
                 .setParameter(0, id)
                 .setParameter(1, 1)
                 .list();
@@ -72,7 +73,7 @@ public class WorkExperienceDAO {
     @SuppressWarnings("unchecked")
     public List<WorkExperience> getAllWorkExperience(int id) {
         
-        return getCurrentSession().createQuery("from WorkExperience where user_id=?")
+        return (List<WorkExperience>) getCurrentSession().createQuery("from WorkExperience where user_id=?")
                 .setParameter(0, id)
                 .list();
     }
