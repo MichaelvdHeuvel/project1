@@ -52,7 +52,7 @@
                                         <form:errors path="address"></form:errors>
                                         </div>
                                     </div>
-                                    <div class="col-md-4 hidden-sm">
+                                    <div class="col-md-4">
                                         <div class="form-group right-inner-addon">
                                             <i class="glyphicon glyphicon-home"></i>
                                         <form:input class="form-control" path="addressNumber" placeholder="Huisnr." />
