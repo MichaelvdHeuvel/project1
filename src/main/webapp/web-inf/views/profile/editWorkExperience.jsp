@@ -9,7 +9,7 @@
             <h1>Werkervaring toevoegen</h1>
 
             <div class="table-responcive table">
-                <form:form method="POST" commandName="workexperience" action="${pageContext.request.contextPath}/profile/edit/workexperience">  
+                <form:form method="POST" commandName="workexp" action="${pageContext.request.contextPath}/profile/edit/workexperience">  
                     <table class="table" border="0px">
                         <tbody>
                             <tr>
@@ -37,6 +37,9 @@
                                 <td><form:textarea path="description" class="form-control"/></td>
                                 <%--<form:errors path="description"></form:errors>--%>
                             </tr>
+                            
+                            <form:hidden path="id" />         
+                            
                             <tr>
                                 <td><button type="submit" class="btn btn-success">Voeg Toe</button></td>
                                 <td><a class="btn btn-danger pull-right" href="${pageContext.request.contextPath}/profile/list/workexperience">Annuleer</a></td>

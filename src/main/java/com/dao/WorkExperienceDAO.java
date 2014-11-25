@@ -40,6 +40,8 @@ public class WorkExperienceDAO {
     public void updateWorkExperience(WorkExperience exp){
         WorkExperience expToUpdate = getWorkExperience(exp.getId());
         
+        System.out.println(exp.getCompany());
+        
         expToUpdate.setCompany(exp.getCompany());
         expToUpdate.setDescription(exp.getDescription());
         expToUpdate.setFunction(exp.getFunction());
